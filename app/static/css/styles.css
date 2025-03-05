@@ -1,0 +1,49 @@
+body {
+    background-color: #f4f6f9;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 800px;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background-color: #007bff !important;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 20px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.form-select, .form-control {
+    border-color: #ced4da;
+    transition: all 0.3s ease;
+}
+
+.form-select:focus, .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+#predictionResult {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.result-positive {
+    color: #dc3545;
+}
+
+.result-negative {
+    color: #28a745;
+}
