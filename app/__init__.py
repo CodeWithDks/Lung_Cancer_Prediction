@@ -1,4 +1,5 @@
 from flask import Flask
+from .database.db_connection import db
 
 def create_app(config_name='development'):
     # Create Flask app instance
@@ -11,6 +12,10 @@ def create_app(config_name='development'):
     else:
         from config.config import DevelopmentConfig
         app.config.from_object(DevelopmentConfig)
+    
+    # Initialize MongoDB
+    from .database.db_connection import db
+    app.db = db
     
     # Import and register blueprints
     from .main import main_blueprint

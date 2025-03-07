@@ -3,7 +3,9 @@ import joblib
 import logging
 from flask import Blueprint, render_template, request, jsonify, current_app
 from .utils.prediction_helper import prepare_input_data
-from config.config import Config  # Ensure this import is correct
+from config.config import Config
+from .database.models import Prediction
+from datetime import datetime
 
 # Create blueprint
 main_blueprint = Blueprint('main', __name__)
@@ -12,10 +14,6 @@ main_blueprint = Blueprint('main', __name__)
 logging.basicConfig(level=logging.INFO, 
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
-
-# Log Config attributes for debugging
-logger.info(f"Config attributes: {dir(Config)}")
-logger.info(f"CLASS_LABELS: {Config.CLASS_LABELS}")
 
 def load_model():
     """
@@ -97,7 +95,16 @@ def predict():
         
         # Log prediction
         logger.info(f"Prediction made: {predicted_label}")
-        
+
+        # Save prediction to MongoDB
+        prediction_data = {
+            'input_data': input_data,
+            'prediction': predicted_label,
+            'date': datetime.now()
+        }
+        Prediction.save_prediction(prediction_data)
+        logger.info("Prediction saved to MongoDB")
+
         # Return prediction
         return jsonify({
             'prediction': predicted_label,
@@ -118,4 +125,22 @@ def predict():
         return jsonify({
             'error': 'An unexpected error occurred during prediction',
             'status': 'error'
-         }), 500
+        }), 500
+
+@main_blueprint.route('/patient-history')
+def patient_history():
+    """
+    Render the patient history page
+    """
+    predictions = Prediction.get_all_predictions()
+    return render_template('patient_history.html', predictions=predictions)
+
+@main_blueprint.route('/dashboard')
+def dashboard():
+    """
+    Render the dashboard page
+    """
+    predictions = Prediction.get_all_predictions()
+    total_predictions = len(predictions)
+    recent_predictions = predictions[-5:]  # Show the last 5 predictions
+    return render_template('dashboard.html', total_predictions=total_predictions, recent_predictions=recent_predictions)

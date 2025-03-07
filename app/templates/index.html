@@ -172,7 +172,14 @@
                 <div id="predictionResult" class="mt-4 text-center"></div>
             </div>
         </div>
-
+        <div class="mt-4 text-center">
+            <a href="{{ url_for('main.dashboard') }}" class="btn btn-info">
+                Go to Dashboard
+            </a>
+            <a href="{{ url_for('main.patient_history') }}" class="btn btn-secondary">
+                View Patient History
+            </a>
+        </div>
         <div class="mt-4 text-center text-muted">
             <p><small>Note: This is a screening tool and not a definitive medical diagnosis. 
                 Always consult with a healthcare professional.</small></p>
