@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lung Cancer Risk Prediction</title>
     <!-- Bootstrap CSS -->
+<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -546,10 +547,173 @@
                     <div class="text-center mt-4">
                         <button type="submit" class="btn btn-primary btn-lg">
                             <i class="fas fa-calculator me-2"></i> Calculate Risk
+=======
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h2>Lung Cancer Risk Prediction</h2>
+            </div>
+            <div class="card-body">
+                <form id="predictionForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Gender</label>
+                            <select name="GENDER" class="form-select" required>
+                                <option value="">Select Gender</option>
+                                <option value="0">Male</option>
+                                <option value="1">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Age</label>
+                            <input type="number" name="AGE" class="form-control" 
+                                   placeholder="Enter Age" min="18" max="100" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Smoking</label>
+                            <select name="SMOKING" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Occasionally</option>
+                                <option value="2">Regularly</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Yellow Fingers</label>
+                            <select name="YELLOW_FINGERS" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Anxiety</label>
+                            <select name="ANXIETY" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Peer Pressure</label>
+                            <select name="PEER_PRESSURE" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Chronic Disease</label>
+                            <select name="CHRONIC DISEASE" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Fatigue</label>
+                            <select name="FATIGUE " class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Allergy</label>
+                            <select name="ALLERGY " class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Wheezing</label>
+                            <select name="WHEEZING" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Alcohol Consuming</label>
+                            <select name="ALCOHOL CONSUMING" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Coughing</label>
+                            <select name="COUGHING" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Shortness of Breath</label>
+                            <select name="SHORTNESS OF BREATH" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Swallowing Difficulty</label>
+                            <select name="SWALLOWING DIFFICULTY" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">Severe</option> <!-- Added 2 -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Chest Pain</label>
+                        <select name="CHEST PAIN" class="form-select" required>
+                            <option value="">Select</option>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                            <option value="2">Severe</option> <!-- Added 2 -->
+                        </select>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Predict Lung Cancer Risk
+>>>>>>> 6f05db7c50a36baf60cbf213254d2d49352e3d4c
                         </button>
                     </div>
                 </form>
 
+<<<<<<< HEAD
                 <div id="predictionResult" class="mt-4 text-center d-none"></div>
             </div>
         </div>
@@ -569,10 +733,27 @@
                 <strong>Important:</strong> This is a screening tool and not a definitive medical diagnosis. 
                 Always consult with a healthcare professional for proper evaluation.
             </div>
+=======
+                <div id="predictionResult" class="mt-4 text-center"></div>
+            </div>
+        </div>
+        <div class="mt-4 text-center">
+            <a href="{{ url_for('main.dashboard') }}" class="btn btn-info">
+                Go to Dashboard
+            </a>
+            <a href="{{ url_for('main.patient_history') }}" class="btn btn-secondary">
+                View Patient History
+            </a>
+        </div>
+        <div class="mt-4 text-center text-muted">
+            <p><small>Note: This is a screening tool and not a definitive medical diagnosis. 
+                Always consult with a healthcare professional.</small></p>
+>>>>>>> 6f05db7c50a36baf60cbf213254d2d49352e3d4c
         </div>
     </div>
 
     <!-- Bootstrap JS -->
+<<<<<<< HEAD
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Your JavaScript -->
@@ -700,5 +881,9 @@
         resultDiv.scrollIntoView({ behavior: 'smooth' });
     });
     </script>
+=======
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+>>>>>>> 6f05db7c50a36baf60cbf213254d2d49352e3d4c
 </body>
 </html>
