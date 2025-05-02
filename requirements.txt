@@ -1,0 +1,10 @@
+flask
+numpy
+pandas
+scikit-learn
+imbalanced-learn
+joblib
+gunicorn
+pymongo
+dnspython
+python-dotenv
